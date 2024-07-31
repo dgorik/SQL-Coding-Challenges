@@ -1,0 +1,4 @@
+# Write your MySQL query statement below
+SELECT EmployeeUNI.unique_id, Employees.name //This selects the unique_id column from the EmployeeUNI table and name column from the Employees table.
+FROM Employees // This is the primary table being queried. All rows from the Employees table will be considered.
+LEFT JOIN EmployeeUNI ON EmployeeUNI.id = Employees.id //LEFT JOIN: This type of join returns all records from the Employees table (the left table) and the matched records from the EmployeeUNI table (the right table). If there is no match, the result is NULL on the side of the EmployeeUNI table.
