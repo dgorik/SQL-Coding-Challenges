@@ -1,0 +1,11 @@
+-- Selects specific columns from the Sales and Product tables
+SELECT 
+    Sales.year,               -- Year of the sale
+    Sales.price,              -- Price of the sale
+    Product.product_name     -- Name of the product sold
+FROM 
+    Sales                    -- Main table containing sales data
+INNER JOIN 
+    Product                  -- Table containing product details
+ON 
+    Sales.product_id = Product.product_id; -- Join condition: matches product_id in Sales with product_id in Product
