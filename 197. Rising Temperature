@@ -1,0 +1,8 @@
+SELECT id
+FROM (
+    SELECT w.id,
+           w.temperature,
+           LAG(w.temperature) OVER (ORDER BY w.id) AS previous_temp
+    FROM weather w
+) Weather // we make a table with three columns: id, temperature and previous_temperature
+WHERE temperature > previous_temp; //the outer query uses the table from inner query and selects ids that meet WHERE clause
