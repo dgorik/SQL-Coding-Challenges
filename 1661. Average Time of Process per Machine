@@ -1,0 +1,8 @@
+SELECT a.machine_id,
+    ROUND(
+        (SELECT AVG(b.timestamp) FROM ACTIVITY b WHERE a.machine_id = b.        machine_id AND b.activity_type = 'end') 
+        - 
+        (SELECT AVG(b.timestamp) FROM ACTIVITY b WHERE a.machine_id = b.machine_id AND b.activity_type = 'start')
+,3) AS  processing_time
+
+FROM Activity a
