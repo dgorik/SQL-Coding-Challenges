@@ -1,0 +1,5 @@
+SELECT Employee.name, Bonus.bonus
+FROM Employee
+LEFT JOIN Bonus //here we match all records from Employee table with matchig records in Bonus table. If there are no mathching records, the result will still include the record from the left table but with NULL values
+ON Employee.empId = Bonus.empId
+WHERE Bonus.bonus < 1000 OR Bonus.bonus IS NULL //Here we are filtering the results with bonus values less than 1000 but also keeping the null values
