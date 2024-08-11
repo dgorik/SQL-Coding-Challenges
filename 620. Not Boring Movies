@@ -1,0 +1,4 @@
+select id, movie, description, rating // we can also use "select *" to select all rows in the table
+from Cinema
+where  id%2 <>0 and upper(description) not in('BORING')
+ORDER BY RATING DESC
