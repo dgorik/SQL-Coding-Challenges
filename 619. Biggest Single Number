@@ -1,0 +1,8 @@
+SELECT Max(num) as num // we are selecting the largest number from a column (num), which we produce from a query below
+FROM(
+    SELECT num
+    FROM MyNumbers
+    GROUP BY 1
+    HAVING COUNT(*) = 1 //here we are selecting rows whose values in a column num only appear once in the table
+)
+as num
