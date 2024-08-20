@@ -1,0 +1,15 @@
+# Write your MySQL query statement below
+SELECT s.product_id, p.first_year, s.quantity, s.price
+-- we process the main subquery after the subquery below, we extract the columns above from the Sales tables and assign an allias of s to that table
+FROM Sales s
+-- we then join the main query with the subquery by keeping all the columns in the main query and bringing first_year column from the subquery
+LEFT JOIN(
+    SELECT product_id, MIN(year) as first_year
+    FROM Sales
+    GROUP BY product_id
+)p
+-- this subquery select the product id and also the minimum year that each product was sold. We then set an alias for this subquery so we can reference its results 
+ON s.product_id = p.product_id AND s.year = p.first_year 
+-- The product_id in the Sales table must match the product_id in the subquery result.
+-- The year in the Sales table must match the first_year from the subquery result.
+WHERE p.first_year IS NOT NULL
