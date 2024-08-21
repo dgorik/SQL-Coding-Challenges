@@ -1,0 +1,7 @@
+SELECT id
+FROM Weather w1
+WHERE temperature > (
+    SELECT temperature
+    FROM Weather w2
+    WHERE w2.recordDate = DATE_SUB(w1.recordDate, INTERVAL 1 DAY) //here we are checking if w2.recordDate is a day prior from w1.recordDate)
+);
