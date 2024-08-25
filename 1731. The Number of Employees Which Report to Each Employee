@@ -1,0 +1,17 @@
+SELECT a1.employee_id, a1.name,(
+    SELECT COUNT(a2.reports_to)
+    FROM Employees a2
+    WHERE a1.employee_id = a2.reports_to
+    ) as reports_count, 
+    (
+      SELECT ROUND(AVG(a3.age),0)
+        FROM Employees a3
+        WHERE a1.employee_id = a3.reports_to
+    ) as average_age
+FROM 
+    Employees a1
+HAVING 
+    reports_count IS NOT NULL AND average_age IS NOT NULL
+ORDER BY 
+    a1.employee_id ASC
+
