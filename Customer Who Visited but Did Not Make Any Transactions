@@ -1,0 +1,16 @@
+SELECT Visits.customer_id,COUNT(*) AS count_no_trans
+FROM Visits
+WHERE visit_id NOT IN (SELECT visit_id FROM Transactions)
+GROUP BY customer_id
+
+
+-----------------------------------------------------------------------------------------------
+
+
+SELECT v1.customer_id, COUNT(*) as count_no_trans
+FROM Visits as v1
+LEFT JOIN Transactions as v2
+ON v1.visit_id = v2.visit_id
+WHERE v2.visit_id IS NULL /// Here we include all rows from the left table and those that do not have corresponding matches in the right table.
+GROUP BY v1.customer_id
+
