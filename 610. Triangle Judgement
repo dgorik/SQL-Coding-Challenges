@@ -1,0 +1,8 @@
+SELECT t.x, 
+    t.y, 
+    t.z,
+    IF(t.x < t.y + t.z AND t.y < t.x + t.z AND t.z < t.x + t.y,
+        "Yes",
+        "No"
+    ) as triangle
+FROM Triangle t
