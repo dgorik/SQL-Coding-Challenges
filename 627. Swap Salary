@@ -1,0 +1,7 @@
+UPDATE Salary
+Set sex  = CASE 
+        WHEN sex = "m" THEN "f"
+        WHEN sex = "f" THEN "m" 
+        END;
+
+//Here we are updating values in column 'sex'. If the value equal to "m", we update it to 'f' and vice versa
